@@ -19,7 +19,13 @@ describe('UserEntity unit tests', () => {
 
   it('Getter of name field', () => {
     expect(sut.props.name).toBeDefined();
-    expect(sut.props.name).toBe(props.name);
+    expect(sut.props.name).toEqual(props.name);
+    expect(typeof sut.props.name).toBe('string');
+  });
+
+  it('Setter of name field', () => {
+    sut['name'] = 'other name';
+    expect(sut.props.name).toEqual(props.name);
     expect(typeof sut.props.name).toBe('string');
   });
 
@@ -35,8 +41,24 @@ describe('UserEntity unit tests', () => {
     expect(typeof sut.props.password).toBe('string');
   });
 
+  it('Setter of password field', () => {
+    sut['password'] = 'other password';
+    expect(sut.props.password).toEqual(props.password);
+    expect(typeof sut.props.password).toBe('string');
+  });
+
   it('Getter of createAt field', () => {
     expect(sut.props.createdAt).toBeDefined();
     expect(sut.props.createdAt).toBeInstanceOf(Date);
+  });
+
+  it('Should update a user', () => {
+    sut.updateName('other name');
+    expect(sut.props.name).toEqual('other name');
+  });
+
+  it('Should update the password field', () => {
+    sut.updatePassword('other password');
+    expect(sut.props.password).toEqual('other password');
   });
 });

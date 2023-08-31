@@ -12,11 +12,11 @@ export class UserEntity extends Entity<UserProps> {
     super(props, id);
     this.props.createdAt = this.props.createdAt ?? new Date();
   }
-  updade(value: string): void {
+  updateName(value: string): void {
     this.name = value;
   }
 
-  update(value: string): void {
+  updatePassword(value: string): void {
     this.password = value;
   }
 
