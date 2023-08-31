@@ -72,3 +72,30 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 # nestjs-clean-arch
+
+## Descrição das Pastas
+
+- **MeuProjeto**: Pasta raiz do projeto.
+
+- **src**: Pasta que contém todo o código-fonte do projeto.
+  - **application**: Camada de aplicação, contendo casos de uso (use cases).
+    - **usecases**: Implementações dos casos de uso do aplicativo.
+  - **domain**: Camada de domínio, contendo regras de negócio e entidades.
+    - **entities**: Definições das entidades do domínio.
+  - **infrastructure**: Camada de infraestrutura, contendo detalhes de implementação.
+    - **controllers**: Controladores da aplicação.
+    - **repositories**: Implementações de repositórios (acesso a banco de dados, por exemplo).
+    - **services**: Serviços utilitários para a infraestrutura.
+
+## Como Contribuir
+
+1. Faça um fork deste repositório.
+2. Clone o fork para a sua máquina: `git clone https://github.com/SEU_USUARIO/MeuProjeto.git`
+3. Crie uma nova branch: `git checkout -b nova-funcionalidade`
+4. Faça suas alterações e commit: `git commit -am 'Adicionei uma nova funcionalidade'`
+5. Envie suas alterações para o GitHub: `git push origin nova-funcionalidade`
+6. Abra um Pull Request nesta branch.
+
+## Licença
+
+Este projeto está sob a [Licença XYZ](LICENSE).
