@@ -1,8 +1,10 @@
 import { MaxLength, IsString, IsNotEmpty, IsDate, IsOptional } from "class-validator";
 import { UserDataBuilder } from "../../testing/helpers/user-data-builder";
 import {  UserRules, UserValidator, UserValidatorFactory } from "../user.validator";
+import { UserProps } from "../../entities/user.entity";
 
 let sut: UserValidator
+let props: UserProps
 
 describe('UserValidator unit tests', () => {
   beforeEach(() => {
@@ -102,6 +104,22 @@ describe('UserValidator unit tests', () => {
       expect(sut.errors['password']).toStrictEqual([
          'password must be shorter than or equal to 100 characters'
         ])
+    })
+  });
+
+  describe('CreatedAt field', () => {
+    it("Invalidation cases for createdAt field", () => {
+      let isValid = sut.validate({...props, createdAt: 1 as unknown as Date})
+      expect(isValid).toBeFalsy()
+      expect(sut.errors['createdAt']).toStrictEqual([
+         'createdAt must be a Date instance'
+      ])
+
+      isValid = sut.validate({...UserDataBuilder({}), createdAt: "2023-08-12" as unknown as Date})
+      expect(isValid).toBeFalsy()
+      expect(sut.errors['createdAt']).toStrictEqual([
+        'createdAt must be a Date instance'
+      ])
     })
   });
 });
