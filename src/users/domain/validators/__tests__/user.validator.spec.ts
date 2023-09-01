@@ -1,4 +1,3 @@
-import { MaxLength, IsString, IsNotEmpty, IsDate, IsOptional } from "class-validator";
 import { UserDataBuilder } from "../../testing/helpers/user-data-builder";
 import {  UserRules, UserValidator, UserValidatorFactory } from "../user.validator";
 import { UserProps } from "../../entities/user.entity";
