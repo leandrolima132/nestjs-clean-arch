@@ -19,6 +19,12 @@ describe("UserEntity integration tests", () => {
 
       props = {
         ...UserDataBuilder({}),
+        name: 10 as any
+      }
+      expect(() => new UserEntity(props)).toThrowError(EntityValidationError)
+
+      props = {
+        ...UserDataBuilder({}),
         name: "a".repeat(256)
       }
       expect(() => new UserEntity(props)).toThrowError(EntityValidationError)
@@ -39,7 +45,28 @@ describe("UserEntity integration tests", () => {
 
       props = {
         ...UserDataBuilder({}),
+        password: 10 as any
+      }
+      expect(() => new UserEntity(props)).toThrowError(EntityValidationError)
+
+      props = {
+        ...UserDataBuilder({}),
         password: "a".repeat(101)
+      }
+      expect(() => new UserEntity(props)).toThrowError(EntityValidationError)
+    })
+
+    it("Should throw an error when creating a user with invalid createdAt", () => {
+      let props: UserProps = {
+        ...UserDataBuilder({}),
+        createdAt: "2023" as unknown as Date
+      }
+      expect(() => new UserEntity(props)).toThrowError(EntityValidationError)
+
+
+      props = {
+        ...UserDataBuilder({}),
+        createdAt: 10 as any
       }
       expect(() => new UserEntity(props)).toThrowError(EntityValidationError)
     })
