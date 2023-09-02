@@ -2,7 +2,7 @@ import { NotFoundError } from "@/shared/errors/not-found-error";
 import { Entity } from "../entities/entity";
 import { RepositoryInterface } from "./repository-contracts";
 
-export abstract class ImMemoryRepository<E extends Entity> implements RepositoryInterface<E> {
+export abstract class InMemoryRepository<E extends Entity> implements RepositoryInterface<E> {
   constructor(){}
 
   items:E[] = [];

@@ -1,5 +1,5 @@
 import { Entity } from "@/shared/domain/entities/entity";
-import { ImMemoryRepository } from "../../in-memory.repository";
+import { InMemoryRepository } from "../../in-memory.repository";
 import { NotFoundError } from "@/shared/errors/not-found-error";
 
 type StubEntityProps = {
@@ -9,7 +9,7 @@ type StubEntityProps = {
 
 class StubEntity extends Entity<StubEntityProps> {}
 
-class SubInMemoryRepository extends ImMemoryRepository<StubEntity> {}
+class SubInMemoryRepository extends InMemoryRepository<StubEntity> {}
 
 describe("ImMemoryRepository unit tests", () => {
   let sut: SubInMemoryRepository
