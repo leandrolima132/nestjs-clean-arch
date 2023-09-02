@@ -36,7 +36,12 @@ describe("ImMemoryRepository unit tests", () => {
     expect(entity.toJSON()).toStrictEqual(result.toJSON())
   })
 
-  it("Should findAll a new entity", () => {})
+  it("Should returns all entities", async () => {
+    const entity = new StubEntity({name: "value", price: 10})
+    await sut.insert(entity)
+    const result = await sut.findAll()
+    expect([entity]).toStrictEqual(result)
+  })
 
   it("Should update a new entity", () => {})
 
