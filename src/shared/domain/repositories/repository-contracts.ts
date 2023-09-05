@@ -7,3 +7,5 @@ export interface RepositoryInterface<E extends Entity> {
   update(entity: E): Promise<void>;
   delete(id: string): Promise<void>;
 }
+
+
