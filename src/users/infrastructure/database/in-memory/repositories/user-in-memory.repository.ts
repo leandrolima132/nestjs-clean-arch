@@ -9,7 +9,7 @@ import { UserRepository } from "@/users/domain/repositories/user.repository";
   sortableFields: string[] = ["name", "createdAt"];
 
    protected async applyFilter(items: UserEntity[], filter: UserRepository.Filter): Promise<UserEntity[]> {
-    if(!filter){
+    if(!filter) {
       return items
     }
 
@@ -24,8 +24,9 @@ import { UserRepository } from "@/users/domain/repositories/user.repository";
 
    async findByEmail(email: string): Promise<UserEntity> {
     const entity = this.items.find(item => item.email === email)
-    if (entity) {
-      throw new NotFoundError("Entity not found using email: " + entity.email)
+
+    if (!entity) {
+      throw new NotFoundError(`Entity not found using email: ${email}`)
    }
    return entity
   }
