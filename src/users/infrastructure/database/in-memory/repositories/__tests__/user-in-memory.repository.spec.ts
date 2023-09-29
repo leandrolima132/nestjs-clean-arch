@@ -68,4 +68,33 @@ describe("UserImMemoryRepository unit tests", () => {
     })
 
 
+    describe("applySort method", () => {
+      it("Should sort by createdAt when sort param is null", async () => {
+        const createdAt = new Date()
+        const items = [
+          new UserEntity(UserDataBuilder({name: "Test", createdAt})),
+          new UserEntity(UserDataBuilder({name: "TEST", createdAt: new Date(createdAt.getTime() + 1)})),
+          new UserEntity(UserDataBuilder({name: "faker", createdAt: new Date(createdAt.getTime() + 2)}))
+        ]
+        const itemsSorted = await sut['applySort'](items, null, null)
+        expect(itemsSorted).toStrictEqual([items[2], items[1], items[0]])
+       })
+
+
+       it("Should sort by name field", async () => {
+        const createdAt = new Date()
+        const items = [
+          new UserEntity(UserDataBuilder({  name: "c" })),
+          new UserEntity(UserDataBuilder({  name: "a" })),
+          new UserEntity(UserDataBuilder({  name: "d"}))
+        ]
+        let itemsSorted = await sut['applySort'](items, 'name', 'asc')
+        expect(itemsSorted).toStrictEqual([items[1], items[0], items[2]])
+
+
+        itemsSorted = await sut['applySort'](items, 'name', null)
+        expect(itemsSorted).toStrictEqual([items[2], items[0], items[1]])
+       })
+    })
+
 })
